@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'top/main'
+  get 'top/login'
+  get 'top/logout'
   get 'users/new'
   get 'users/create'
   get 'users/edit'
