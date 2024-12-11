@@ -11,6 +11,7 @@
       <table class="table">
         <thead class="thead-light">
           <tr>
+            <th>表示</th>
             <th>タイトル</th>
             <th>日程</th>
           </tr>
@@ -18,8 +19,9 @@
         <tbody>
           <% @blogs.each do |blog| %>
             <tr>
-              <th><%= link_to blog.title, blog %></th>
-              <th><%= blog.start_time.strftime("%m-%d") %></th>
+              <td><input type="checkbox" class="toggle-visibility" data-blog-id="<%= blog.id %>" checked></td>
+              <td><%= link_to blog.title, blog_path(blog) %></td>
+              <td><%= blog.start_time.strftime("%m-%d") %></td>
             </tr>
           <% end %>
         </tbody>
@@ -53,8 +55,8 @@
         <div class="calendar-day">
           <%= date.day %>
           <% blogs.each do |blog| %>
-            <div>
-              <%= link_to blog.title, blog %>
+            <div class="calendar-event" data-blog-id="<%= blog.id %>">
+              <%= link_to blog.title, blog_path(blog) %>
             </div>
           <% end %>
         </div>
@@ -62,3 +64,22 @@
     </div> <!-- col-md-8 終了 -->
   </div> <!-- row 終了 -->
 </div> <!-- toppage 終了 -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const checkboxes = document.querySelectorAll(".toggle-visibility");
+    checkboxes.forEach(function(checkbox) {
+      checkbox.addEventListener("change", function() {
+        const blogId = this.getAttribute("data-blog-id");
+        const events = document.querySelectorAll(`.calendar-event[data-blog-id='${blogId}']`);
+        events.forEach(function(event) {
+          if (checkbox.checked) {
+            event.style.display = "";
+          } else {
+            event.style.display = "none";
+          }
+        });
+      });
+    });
+  });
+</script>
