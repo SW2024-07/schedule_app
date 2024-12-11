@@ -15,6 +15,16 @@
  *= require_self
  */
  
+ /* ベースの色 */
+:root {
+  --color-white: #ffffff;
+  --color-lighter: #f2ece4;
+  --color-light: #e7dccc;
+  --color-dark: #363234;
+  --color-black: #000000;
+  --color-accent: #346a85;
+}
+
 /* カレンダーのスタイル */
 table.table {
   width: 100%;

@@ -1,0 +1,85 @@
+/* ボディ */
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--color-lighter);
+  color: var(--color-black);
+  margin: 0;
+  padding: 0;
+}
+
+/* ヘッダー */
+header {
+  background-color: var(--color-dark);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+/* サイト名 */
+.site-name {
+  font-size: 1.5rem;
+  color: var(--color-white);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ナビゲーション */
+.header-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  color: var(--color-white);
+  background-color: var(--color-dark);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+/* ボタン（ログアウト） */
+.btn {
+  background-color: transparent;
+  border: none;
+  color: var(--color-dark);
+  cursor: pointer;
+}
+
+.btn:hover {
+  text-decoration: underline;
+}
+
+/* ログイン時のナビゲーション */
+.logged-in .nav-link {
+  color: var(--color-dark);
+}
+
+.logged-in .nav-link:hover {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+/* ヘッダーのレスポンシブ */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
