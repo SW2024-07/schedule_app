@@ -5,4 +5,5 @@
   <p>メールアドレス: <%= @user.email %></p>
 </div>
 
+<%= link_to '作成したカレンダー', blogs_index_path %>
 <%= link_to 'ログアウト', logout_path, method: :get, class: 'btn btn-danger' %>
