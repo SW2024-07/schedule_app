@@ -5,5 +5,13 @@
   <p>メールアドレス: <%= @user.email %></p>
 </div>
 
-<%= link_to '作成したカレンダー', blogs_path %>
-<%= link_to 'ログアウト', logout_path, method: :get, class: 'btn btn-danger' %>
+<div class="user-calendars">
+  <h2>作成したカレンダー</h2>
+  <ul>
+    <% @user_calendars.each do |calendar| %>
+      <h3><%= link_to calendar.title, user_calendar_path(calendar) %></h3>
+      <p><%= calendar.description %></p>
+    <% end %>
+  </ul>
+  <%= link_to '新しいカレンダーを作成', new_user_calendar_path %>
+</div>
