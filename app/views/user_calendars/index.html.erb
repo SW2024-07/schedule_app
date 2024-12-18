@@ -1,0 +1,12 @@
+<h1>カレンダー一覧</h1>
+
+<%= link_to '新しいカレンダーを作成', new_user_calendar_path %>
+
+<% @user_calendars.each do |calendar| %>
+  <div>
+    <h3><%= link_to calendar.title, user_calendar_path(calendar) %></h3>
+    <p><%= calendar.description %></p>
+    <%= link_to '編集', edit_user_calendar_path(calendar) %> |
+    <%= link_to '削除', user_calendar_path(calendar), method: :destroy, data: { confirm: '本当に削除しますか？' } %>
+  </div>
+<% end %>

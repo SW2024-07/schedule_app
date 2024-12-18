@@ -1,0 +1,30 @@
+<h1>カレンダーを編集</h1>
+
+<%= form_with(model: @user_calendar, local: true) do |form| %>
+  <% if @user_calendar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_calendar.errors.count, "error") %> prohibited this user_calendar from being saved:</h2>
+      <ul>
+        <% @user_calendar.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.submit 'カレンダーを更新' %>
+  </div>
+<% end %>
+
+<%= link_to '戻る', user_calendar_path(@user_calendar) %>
