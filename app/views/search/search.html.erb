@@ -1,0 +1,13 @@
+<!-- app/views/search/search.html.erb -->
+<h1>Search Results</h1>
+
+<% if @results.present? %>
+  <ul>
+    <% @results.each do |post| %>
+      <% highlighted_title = post.title.gsub(/(#{Regexp.escape(@query)})/i, '<span class="highlight">\1</span>').html_safe %>
+      <li><%= link_to highlighted_title, post_path(post) %></li>  <!-- 検索結果をリンクとして表示 -->
+    <% end %>
+  </ul>
+<% else %>
+  <p>No results found.</p>  <!-- 結果がない場合 -->
+<% end %>

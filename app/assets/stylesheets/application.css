@@ -16,6 +16,15 @@
  */
  
  /* ベースの色 */
+ 
+ /* app/assets/stylesheets/application.css または application.scss */
+.highlight {
+  color: red;
+  font-weight: bold;
+}
+
+ 
+ 
 :root {
   --color-white: #ffffff;
   --color-lighter: #f2ece4;

@@ -28,6 +28,10 @@
           <% end %>
         </nav>
       </div>
+        <%= form_with(url: search_path, method: :get, local: true) do |form| %>
+          <%= form.text_field :query, placeholder: "Search..." %>
+          <%= form.submit "Search" %>
+        <% end %>
     </header>
 
     <main>

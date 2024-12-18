@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post 'login', to: 'top#login'
   get 'top/logout', to: 'top#logout', as: 'logout'
   root 'top#main'
+  get 'search', to: 'search#search', as: 'search'
  #asd
   resources :users, only: [:new, :create, :show] # 新規登録とマイページ
 end
