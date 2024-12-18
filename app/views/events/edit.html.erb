@@ -1,0 +1,8 @@
+<h1>イベントを編集</h1>
+<%= render 'form' %>
+
+<%= button_to '削除', user_calendar_event_path(@user_calendar, @event), 
+              method: :delete, 
+              data: { confirm: '本当に削除しますか？' }, 
+              class: 'btn btn-danger' %>
+<%= button_to '戻る', @user_calendar, class: 'btn btn-secondary' %>
