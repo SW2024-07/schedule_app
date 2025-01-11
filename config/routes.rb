@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
+  get 'comments/create'
   get 'top/main'
   get 'top/login'
   get 'top/logout'
   get 'login', to: 'top#login'
   post 'login', to: 'top#login'
   get 'top/logout', to: 'top#logout', as: 'logout'
+  
   root 'top#main'
+  
+  # config/routes.rb
+  get 'search', to: 'search#show', as: 'search'
+
   
   get 'mypage', to: 'users#show', as: :mypage
   
@@ -14,4 +20,5 @@ Rails.application.routes.draw do
   resources :user_calendars do
     resources :events
   end
+
 end
