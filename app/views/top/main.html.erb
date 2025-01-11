@@ -2,6 +2,8 @@
 <p>ここにトップページのコンテンツを配置</p>
 <% if logged_in? %>
   <p><%= current_user.username %> としてログインしています</p>
+  <%= link_to 'ログアウト', logout_path%>
 <% else %>
   <p>ログインしてください</p>
 <% end %>
+

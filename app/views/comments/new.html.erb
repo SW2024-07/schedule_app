@@ -1,0 +1,25 @@
+<h1>新しいコメントを書く</h1>
+
+<%= form_with model: @comment, local: true do |form| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit '投稿する' %>
+  </div>
+<% end %>
+
+<%= link_to 'コメント一覧に戻る', comments_path %>

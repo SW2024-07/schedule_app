@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_18_082043) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_11_082054) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -18,12 +18,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_18_082043) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "blogs", force: :cascade do |t|
-    t.string "title"
+  create_table "comments", force: :cascade do |t|
     t.text "content"
-    t.datetime "start_time", precision: nil
-    t.datetime "created_at", precision: nil, null: false
-    t.datetime "updated_at", precision: nil, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "events", force: :cascade do |t|

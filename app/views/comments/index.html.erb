@@ -1,0 +1,12 @@
+<h1>コメント一覧</h1>
+
+<%= link_to '新しいコメントを書く', new_comment_path %>
+
+<ul>
+  <% @comments.each do |comment| %>
+    <li>
+      <p><%= comment.content %></p>
+      <%= link_to '削除', comment_path(comment), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+    </li>
+  <% end %>
+</ul>
