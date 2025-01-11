@@ -6,7 +6,6 @@
   <% @comments.each do |comment| %>
     <li>
       <p><%= comment.content %></p>
-      <%= link_to '削除', comment_path(comment), method: :delete, data: { confirm: '本当に削除しますか？' } %>
     </li>
   <% end %>
 </ul>
