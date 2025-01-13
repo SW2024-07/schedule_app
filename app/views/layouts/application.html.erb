@@ -18,6 +18,10 @@
     <header>
       <div class="header-container">
         <a href="<%= root_path %>" class="site-name">カレンダー共有アプリ</a>
+        <%= form_with url: search_path, method: :get, local: true do |form| %>
+        <%= form.text_field :query, placeholder: "Search..." %>
+        <%= form.submit "Search" %>
+        <% end %>
         <nav class="header-nav">
           <% if logged_in? %>
             <%= link_to 'マイページ', user_path(current_user), class: 'nav-link' %>
@@ -27,11 +31,8 @@
             <%= link_to 'ログイン', login_path, class: 'nav-link' %>
           <% end %>
         </nav>
-      </div>
-        <%= form_with(url: search_path, method: :get, local: true) do |form| %>
-          <%= form.text_field :query, placeholder: "Search..." %>
-          <%= form.submit "Search" %>
-        <% end %>
+      
+    
     </header>
 
     <main>

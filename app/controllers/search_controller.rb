@@ -1,9 +1,10 @@
-# app/controllers/search_controller.rb
 class SearchController < ApplicationController
-  def search
-    @query = params[:query]  # 検索キーワード
-    if @query.present?
-      @results = Post.where("title LIKE ?", "%#{@query}%")  # Postモデルを検索
+  def index
+    if params[:query].present?
+      @user_result =User.where("username LIKE ?", "%#{params[:query]}%")
+      @user_Calendar =UserCalendar.where("title LIKE ?", "%#{params[:query]}%")
+      @comment_result =Comment.where("content LIKE ?", "%#{params[:query]}%")
+     @results = (@user_result || [] + @user_Calendar || [] + @comment_result || []).uniq
     else
       @results = []
     end

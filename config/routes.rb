@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'search/index'
   get 'top/main'
   get 'top/login'
   get 'top/logout'
@@ -12,8 +13,7 @@ Rails.application.routes.draw do
   #root 'comments#index'
 
 
-  # config/routes.rb
-  get 'search', to: 'search#show', as: 'search'
+  get 'search', to: 'search#index'
 
   
   get 'mypage', to: 'users#show', as: :mypage
