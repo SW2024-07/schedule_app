@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   post 'login', to: 'top#login'
   get 'top/logout', to: 'top#logout', as: 'logout'
 
-  #root 'top#main'
-  root 'user_calendars#new'
+  root 'top#main'
+  
 
   resources :comments, only: [:index, :new, :create, :destroy]
   get 'search', to: 'search#index'
