@@ -8,13 +8,19 @@
 <div class="user-calendars">
   <h2>作成したカレンダー</h2>
   <ul>
-    <% @user_calendars.each do |calendar| %>
-      <h3><%= link_to calendar.title, user_calendar_path(calendar) %></h3>
-      <p><%= calendar.description %></p>
+    <% if @user_calendars.present? %>
+      <% @user_calendars.each do |calendar| %>
+        <li>
+          <h3><%= link_to calendar.title, user_calendar_path(calendar) %></h3>
+          <p><%= calendar.description %></p>
+        </li>
+      <% end %>
+    <% else %>
+      <p>カレンダーが見つかりません。</p>
     <% end %>
   </ul>
-  <%= link_to '新しいカレンダーを作成', new_user_calendar_path %>
-</div>
 
+</div>
+<%= link_to 'Back', request.referer || posts_path %>
 
 
