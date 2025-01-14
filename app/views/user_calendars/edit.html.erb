@@ -27,4 +27,4 @@
   </div>
 <% end %>
 
-<%= link_to '戻る', user_calendar_path(@user_calendar) %>
+<%= link_to 'Back', request.referer || posts_path %>

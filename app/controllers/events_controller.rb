@@ -5,11 +5,15 @@ class EventsController < ApplicationController
   def new
     @event = @user_calendar.events.new
   end
+  def show
+    @user_calendar = UserCalendar.find(params[:user_calendar_id])  # カレンダーの取得
+    @events = @user_calendar.events  # ユーザーのカレンダーに紐づくイベントを取得
+  end
 
   def create
     @event = @user_calendar.events.new(event_params)
     if @event.save
-      redirect_to @user_calendar, notice: 'イベントが追加されました。'
+      redirect_to user_calendar_event_path(@user_calendar, @event), notice: 'イベントが追加されました。'
     else
       render :new
     end
@@ -19,7 +23,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to @user_calendar, notice: 'イベントが更新されました。'
+      redirect_to user_calendar_event_path(@user_calendar, @event), notice: 'イベントが更新されました。'
     else
       render :edit
     end
@@ -27,7 +31,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to @user_calendar, notice: 'イベントが削除されました。'
+    redirect_to user_calendar_event_path(@user_calendar, @event), notice: 'イベントが削除されました。'
   end
 
   private

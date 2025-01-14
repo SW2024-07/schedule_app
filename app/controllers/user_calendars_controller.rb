@@ -18,7 +18,8 @@ class UserCalendarsController < ApplicationController
   def create
     @user_calendar = current_user.user_calendars.build(user_calendar_params)
     if @user_calendar.save
-      redirect_to @user_calendar, notice: 'カレンダーが作成されました。'
+      redirect_to new_user_calendar_event_path(user_calendar_id: @user_calendar.id), notice: 'カレンダーが作成されました。'
+
     else
       render :new
     end
@@ -29,7 +30,7 @@ class UserCalendarsController < ApplicationController
 
   def update
     if @user_calendar.update(user_calendar_params)
-      redirect_to @user_calendar, notice: 'カレンダーが更新されました。'
+      redirect_to user_calendars_path, notice: 'カレンダーが更新されました。'
     else
       render :edit
     end
@@ -37,7 +38,7 @@ class UserCalendarsController < ApplicationController
 
   def destroy
     @user_calendar.destroy
-    redirect_to mypage_path, notice: 'カレンダーが削除されました。'
+    redirect_to user_calendars_path, notice: 'カレンダーが削除されました。'
   end
 
   private
@@ -48,5 +49,9 @@ class UserCalendarsController < ApplicationController
 
   def user_calendar_params
     params.require(:user_calendar).permit(:title, :description)
+  end
+  def show
+    @user_calendar = UserCalendar.find(params[:user_calendar_id])  # カレンダーの取得
+    @events = @user_calendar.events  # ユーザーのカレンダーに紐づくイベントを取得
   end
 end

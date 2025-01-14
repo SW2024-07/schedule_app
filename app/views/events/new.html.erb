@@ -1,5 +1,5 @@
 <h1>新しいイベントを追加</h1>
-
+<p>ID: <%= @user_calendar.id %></p>
 <%= form_with(model: [@user_calendar, @event], local: true) do |form| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
@@ -31,5 +31,5 @@
     <%= form.submit 'イベントを作成' %>
   </div>
 <% end %>
+<%= link_to 'Back', request.referer || posts_path %>
 
-<%= link_to '戻る', user_calendar_path(@user_calendar) %>

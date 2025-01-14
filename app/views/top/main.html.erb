@@ -1,7 +1,7 @@
 <h1>カレンダー共有アプリ</h1>
-<p>ここにトップページのコンテンツを配置</p>
 <% if logged_in? %>
   <p><%= current_user.username %> としてログインしています</p>
+  <%= link_to 'カレンダーの一覧へ', user_calendars_path%>
   <%= link_to 'ログアウト', logout_path%>
 <% else %>
   <p>ログインしてください</p>

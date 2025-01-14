@@ -1,0 +1,19 @@
+<h1><%= @user_calendar.title %> - イベントカレンダー</h1>
+<p>ID: <%= @user_calendar.id %></p>
+
+<%= link_to '新しいイベントを追加', new_user_calendar_event_path(@user_calendar), class: 'add-new-event' %>
+
+<%= month_calendar events: @events do |date, events| %>
+  <div class="day">
+    <%= date.day %>
+    <% events.each do |event| %>
+      <div class="event">
+        <%= link_to event.title, user_calendar_event_path(@user_calendar, event) %>
+        <%= link_to '編集', edit_user_calendar_event_path(@user_calendar, event), class: 'edit-event' %> <!-- 編集リンク追加 -->
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= link_to 'カレンダ一覧に戻る', user_calendars_path %>
+
