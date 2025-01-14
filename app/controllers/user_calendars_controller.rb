@@ -3,7 +3,8 @@ class UserCalendarsController < ApplicationController
   before_action :set_user_calendar, only: [:show, :edit, :update, :destroy]
 
   def index
-    @user_calendars = current_user.user_calendars
+    #@user_calendars = current_user.user_calendars
+    @user_calendars = UserCalendar.all 
   end
 
   def show
@@ -37,14 +38,25 @@ class UserCalendarsController < ApplicationController
   end
 
   def destroy
-    @user_calendar.destroy
-    redirect_to user_calendars_path, notice: 'カレンダーが削除されました。'
+    @user_calendar = UserCalendar.find_by(id: params[:id])
+  
+    if @user_calendar
+      @user_calendar.destroy
+      redirect_to user_calendars_path, notice: 'カレンダーが削除されました。'
+    else
+      redirect_to user_calendars_path, alert: '指定されたカレンダーは見つかりませんでした。'
+    end
   end
 
   private
-
+  
   def set_user_calendar
-    @user_calendar = current_user.user_calendars.find(params[:id])
+    @user_calendar = current_user.user_calendars.find_by(id: params[:id])
+  
+    # カレンダーが見つからない場合
+    unless @user_calendar
+      redirect_to user_calendars_path, alert: '指定されたカレンダーは存在しません。'
+    end
   end
 
   def user_calendar_params
