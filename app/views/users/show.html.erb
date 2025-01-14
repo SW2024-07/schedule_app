@@ -5,22 +5,6 @@
   <p>メールアドレス: <%= @user.email %></p>
 </div>
 
-<div class="user-calendars">
-  <h2>作成したカレンダー</h2>
-  <ul>
-    <% if @user_calendars.present? %>
-      <% @user_calendars.each do |calendar| %>
-        <li>
-          <h3><%= link_to calendar.title, user_calendar_path(calendar) %></h3>
-          <p><%= calendar.description %></p>
-        </li>
-      <% end %>
-    <% else %>
-      <p>カレンダーが見つかりません。</p>
-    <% end %>
-  </ul>
-
-</div>
 
 <%= link_to 'メインへ', request.referer || user_calendars_path %>
 

@@ -8,7 +8,7 @@
     <p>タイトル: <%= calendar.title %></p>
     <p>説明：<%= calendar.description %></p>
     <%= link_to '編集', edit_user_calendar_path(calendar) %> |
-   <%= link_to '削除', user_calendar_path(calendar), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+    <%= link_to '削除', user_calendar_path(calendar), method: :delete, data: { confirm: '本当に削除しますか？' } %>
   　<% if calendar.events.any? %>
   　　<%= link_to 'イベントを表示', user_calendar_event_path(calendar, calendar.events.first) %>
     <% else %>
