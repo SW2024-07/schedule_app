@@ -1,6 +1,6 @@
 class UserCalendarsController < ApplicationController
   before_action :authenticate_user! # ユーザーがログインしていない場合、ログインページにリダイレクト
-  before_action :set_user_calendar, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_calendar, only: [:edit, :update, :destroy]
 
   def index
     #@user_calendars = current_user.user_calendars
