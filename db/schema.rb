@@ -18,6 +18,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_14_143714) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "blogs", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.datetime "start_time", precision: nil
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
